@@ -8,6 +8,7 @@ alternative to `st.table` with configuration displaying Pandas DataFrame
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/st-df-table)
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/st-df-table)
 ![PyPI - Format](https://img.shields.io/pypi/format/st-df-table)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/st-df-table)
 
 ## Installation instructions
 
