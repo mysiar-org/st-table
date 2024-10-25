@@ -7,7 +7,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setuptools.setup(
     name="st-df-table",
-    version="0.0.2",
+    version="0.0.3",
     author="Piotr Synowiec",
     author_email="psynowiec@gmail.com",
     description="Alternative to `st.table` with configuration displaying Pandas DataFrame",
