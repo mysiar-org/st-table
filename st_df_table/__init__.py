@@ -34,6 +34,8 @@ def st_table(
     border_width: int = 1,
     table_width: int = None,
     sortable: bool = True,
+    font: str = "Arial",
+    font_size: int = 16,
     key=None,
 ):
     """Displays Pandas DataFrame
@@ -54,6 +56,8 @@ def st_table(
     border_width: int - table border width in pixels
     table_width: int - table width in pixels
     sortable: bool - table columns sortable
+    font: str - table font name
+    font_size: int - table font size in pixels
     key: str
         An optional key that uniquely identifies this component. If this is
         None, and the component's arguments are changed, the component will
@@ -67,7 +71,6 @@ def st_table(
     columns = [{"dataField": col, "text": col, "sort": sortable} for col in df.columns]
     data = df.reset_index().to_dict(orient="records")
     _component_func(
-        key=key,
         columns=columns,
         data=data,
         head_align=head_align,
@@ -82,4 +85,8 @@ def st_table(
         border_color=border_color,
         border_width=border_width,
         table_width=table_width,
+        sortable=sortable,
+        font=font,
+        font_size=font_size,
+        key=key,
     )
