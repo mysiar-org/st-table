@@ -30,9 +30,10 @@ def st_table(
     head_font_weight: str = "bold",
     data_font_weight: str = "normal",
     bordered: bool = True,
-    sortable: bool = True,
     border_color: str = "black",
-    border_width: str = "1",
+    border_width: int = 1,
+    table_width: int = None,
+    sortable: bool = True,
     key=None,
 ):
     """Displays Pandas DataFrame
@@ -49,18 +50,23 @@ def st_table(
     head_font_weight: str - table header font weight
     data_font_weight: str - table data font weight
     bordered: bool - table bordered
-    sortable
-    border_color
-    border_width
-    key
+    border_color: str - table border color
+    border_width: int - table border width in pixels
+    table_width: int - table width in pixels
+    sortable: bool - table columns sortable
+    key: str
+        An optional key that uniquely identifies this component. If this is
+        None, and the component's arguments are changed, the component will
+        be re-mounted in the Streamlit frontend and lose its current state.
 
     Returns
     -------
+    None
 
     """
     columns = [{"dataField": col, "text": col, "sort": sortable} for col in df.columns]
     data = df.reset_index().to_dict(orient="records")
-    component_value = _component_func(
+    _component_func(
         key=key,
         columns=columns,
         data=data,
@@ -75,5 +81,5 @@ def st_table(
         bordered=bordered,
         border_color=border_color,
         border_width=border_width,
+        table_width=table_width,
     )
-    return component_value
