@@ -3,7 +3,7 @@ name = "st-df-table"
 version = "0.0.0"
 [tool.poetry]
 name = "st-df-table"
-version = "0.0.1rc2"
+version = "0.0.1"
 readme = "README.md"
 license = "MIT"
 repository = "https://github.com/mysiar-org/st-table"
