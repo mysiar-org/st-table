@@ -22,6 +22,9 @@ const StTable: React.FC<Props> = (props) => {
     const border_color = args.border_color
     let border_width = args.border_width
     const table_width = args.table_width
+    const sortable = args.sortable
+    const font = args.font
+    const font_size = args.font_size
 
     if (!bordered) {
         border_width = 0
@@ -29,26 +32,31 @@ const StTable: React.FC<Props> = (props) => {
 
     const columns = args.columns.map((col: ColumnDescription) => ({
         ...col,
+        sort: sortable,
         headerStyle: {
             textAlign: head_align,
             backgroundColor: head_bg_color,
             color: head_color,
-            fontWeight: head_font_weight
+            fontWeight: head_font_weight,
+            fontFamily: font,
+            fontSize: font_size,
         },
         style: {
             textAlign: col.align || data_align,
             backgroundColor: data_bg_color,
             color: data_color,
-            fontWeight: data_font_weight
+            fontWeight: data_font_weight,
+            fontFamily: font,
+            fontSize: font_size,
         }
     }));
     const data = args.data;
 
 
     useEffect(() => {
-        const tableHeight = data.length * (40 + border_width) + 49
+        const tableHeight = (data.length + 1) * (font_size * 1.5 + border_width + 2 * 8) + 2 * border_width
         Streamlit.setFrameHeight(tableHeight);
-    }, [data, border_width]);
+    }, [data, border_width, font_size]);
 
     return (
         <div style={table_width ? {width: table_width} : {}}>
@@ -61,6 +69,11 @@ const StTable: React.FC<Props> = (props) => {
             .custom-border.react-bootstrap-table td {
             border: ${border_width}px ${border_color} solid !important;
             }
+            .custom-font-family.react-bootstrap-table td,
+            .custom-font-family.react-bootstrap-table th {
+                font-family: ${font} !important;
+                font-size: ${font_size}px !important;
+        }
         `}</style>
 
             <BootstrapTable

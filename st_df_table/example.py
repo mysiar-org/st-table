@@ -63,6 +63,8 @@ st_table(
     head_font_weight="normal",
     border_color="red",
     border_width=3,
+    font="monospace",
+    font_size=14,
     key="left2",
 )
 st.subheader("Default")
