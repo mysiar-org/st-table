@@ -25,7 +25,9 @@ build::
 	rm -rf ${COMPONENT}/frontend/build
 	mkdir -p ${COMPONENT}/frontend/build
 	cd ${COMPONENT}/frontend && npm run build
-	venv/bin/poetry build
+	rm -rf build/lib/${COMPONENT}/frontend/node_modules
+	rm -rf build/bdist.linux-x86_64/${COMPONENT}/frontend/node_modules
+	venv/bin/python setup.py sdist bdist_wheel
 
 test::
 	cd tests && make test

@@ -46,13 +46,9 @@ const StTable: React.FC<Props> = (props) => {
 
 
     useEffect(() => {
-        // const tableHeight = Math.min(500, Math.max(data.length * (40 + parseInt(border_width)) + 50, 150));
-        // const tableHeight = Math.min(500, Math.max(data.length * (40 + border_width) + 50, 150));
         const tableHeight = data.length * (40 + border_width) + 49
-        console.log(border_width)
-        console.log(tableHeight)
         Streamlit.setFrameHeight(tableHeight);
-    }, [data]);
+    }, [data, border_width]);
 
     return (
         <div style={table_width ? { width: table_width } : {}}>
