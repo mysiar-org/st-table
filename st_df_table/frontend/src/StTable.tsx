@@ -46,16 +46,12 @@ const StTable: React.FC<Props> = (props) => {
 
 
     useEffect(() => {
-        // const tableHeight = Math.min(500, Math.max(data.length * (40 + parseInt(border_width)) + 50, 150));
-        // const tableHeight = Math.min(500, Math.max(data.length * (40 + border_width) + 50, 150));
         const tableHeight = data.length * (40 + border_width) + 49
-        console.log(border_width)
-        console.log(tableHeight)
         Streamlit.setFrameHeight(tableHeight);
-    }, [data]);
+    }, [data, border_width]);
 
     return (
-        <div style={table_width ? { width: table_width } : {}}>
+        <div style={table_width ? {width: table_width} : {}}>
             <style>{`
                 .custom-border.react-bootstrap-table,
                 .custom-border.react-bootstrap-table table {
@@ -67,8 +63,13 @@ const StTable: React.FC<Props> = (props) => {
             }
         `}</style>
 
-            <BootstrapTable keyField='id' data={data} columns={columns}
-                            wrapperClasses="custom-border" bordered={bordered}/>
+            <BootstrapTable
+                keyField='id'
+                data={data}
+                columns={columns}
+                wrapperClasses="custom-border"
+                bordered={bordered}
+            />
         </div>
     );
 };
