@@ -40,3 +40,7 @@ upload::
 	$(MAKE) build
 	venv/bin/python -m twine upload -u $${PYPI_USER} -p $${PYPI_PASS} --verbose dist/*
 
+
+kill::
+	killall -9 node
+	killall -9 streamlit

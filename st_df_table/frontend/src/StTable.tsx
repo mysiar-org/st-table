@@ -51,7 +51,7 @@ const StTable: React.FC<Props> = (props) => {
     }, [data, border_width]);
 
     return (
-        <div style={table_width ? { width: table_width } : {}}>
+        <div style={table_width ? {width: table_width} : {}}>
             <style>{`
                 .custom-border.react-bootstrap-table,
                 .custom-border.react-bootstrap-table table {
@@ -63,8 +63,13 @@ const StTable: React.FC<Props> = (props) => {
             }
         `}</style>
 
-            <BootstrapTable keyField='id' data={data} columns={columns}
-                            wrapperClasses="custom-border" bordered={bordered}/>
+            <BootstrapTable
+                keyField='id'
+                data={data}
+                columns={columns}
+                wrapperClasses="custom-border"
+                bordered={bordered}
+            />
         </div>
     );
 };
