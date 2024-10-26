@@ -36,12 +36,24 @@ def st_table(
     sortable: bool = True,
     font: str = "Arial",
     font_size: int = 16,
+    paginated: bool = False,
+    pagination_size_per_page: int = 10,
+    pagination_bar_size: int = 5,
+    pagination_text_color: str = "black",
+    pagination_bg_color: str = "white",
+    pagination_border_color: str = "black",
+    pagination_active_color: str = "white",
+    pagination_active_border_color: str = "black",
+    pagination_active_bg_color: str = "gray",
+    pagination_hover_color: str = "white",
+    pagination_hover_bg_color: str = "gray",
     key=None,
 ):
     """Displays Pandas DataFrame
 
     Parameters
     ----------
+
     df: pd.DataFrame
     head_align: str - aligning table header, values are: "center", "left", "right"
     data_align: str - align table data, values are: "center", "left", "right"
@@ -58,6 +70,17 @@ def st_table(
     sortable: bool - table columns sortable
     font: str - table font name
     font_size: int - table font size in pixels
+    paginated: bool - table paginated
+    pagination_size_per_page: int - number of records per page
+    pagination_bar_size: int - pagination bar size
+    pagination_text_color: str - text color of pagination bar
+    pagination_bg_color: str - background color of pagination bar
+    pagination_border_color: str - border color of pagination bar
+    pagination_active_color: str - active text color of pagination bar
+    pagination_active_border_color: str - active border color of pagination bar
+    pagination_active_bg_color: str - active background color of pagination bar
+    pagination_hover_color: str - hover text color of pagination bar
+    pagination_hover_bg_color: str - hover background color of pagination bar
     key: str
         An optional key that uniquely identifies this component. If this is
         None, and the component's arguments are changed, the component will
@@ -88,5 +111,16 @@ def st_table(
         sortable=sortable,
         font=font,
         font_size=font_size,
+        paginated=paginated,
+        pagination_size_per_page=pagination_size_per_page,
+        pagination_bar_size=pagination_bar_size,
+        pagination_text_color=pagination_text_color,
+        pagination_bg_color=pagination_bg_color,
+        pagination_border_color=pagination_border_color,
+        pagination_active_color=pagination_active_color,
+        pagination_active_border_color=pagination_active_border_color,
+        pagination_active_bg_color=pagination_active_bg_color,
+        pagination_hover_color=pagination_hover_color,
+        pagination_hover_bg_color=pagination_hover_bg_color,
         key=key,
     )

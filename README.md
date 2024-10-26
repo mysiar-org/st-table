@@ -62,3 +62,33 @@ st_table(
 )
 ```
 ![table-3](https://raw.githubusercontent.com/mysiar-org/st-table/refs/heads/master/doc/table3.png)
+
+```python
+import string
+import numpy as np
+import pandas as pd
+from st_df_table import st_table
+
+df = pd.DataFrame(
+    {
+        "Column A": list(range(1, 101)),
+        "Column B": np.random.choice(list(string.ascii_uppercase), size=100),
+        "Column C": np.random.rand(100),
+    }
+)
+
+st_table(
+    df,
+    border_width=4,
+    border_color="red",
+    paginated=True,
+    pagination_size_per_page=7,
+    pagination_bar_size=4,
+    pagination_text_color="blue",
+    pagination_bg_color="yellow",
+    pagination_border_color="green",
+    pagination_active_color="yellow",
+)
+
+```
+![table-4](https://raw.githubusercontent.com/mysiar-org/st-table/refs/heads/master/doc/table4.png)
