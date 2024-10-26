@@ -1,8 +1,10 @@
 [tool.poetry]
 name="st-df-table"
+authors = ["Piotr Synowiec <psynowiec@gmail.com>"]
+description = "Python data manipulation library"
+version="0.0.4"
 [tool.poetry.dependencies]
 python = "^3.7"
-
 
 [tool.flake8]
 count = "true"
