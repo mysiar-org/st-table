@@ -1,11 +1,13 @@
+import string
+from importlib.metadata import version
+
 import numpy as np
 import pandas as pd
 import streamlit as st
-import string
 
 from st_df_table import st_table
 
-st.set_page_config(layout="wide", page_title="st_df_table.st_table")
+# st.set_page_config(layout="wide", page_title="st_df_table.st_table")
 
 data = {
     "Column A": [1, 2, 3, 4, 5, 6],
@@ -15,7 +17,7 @@ data = {
 
 df = pd.DataFrame(data)
 
-st.title("st_df_table.st_table - custom DataFrame display")
+st.title(f"st_df_table.st_table ({version('st_df_table')}) - custom DataFrame display")
 st.subheader("Default")
 st_table(df)
 st.subheader("Align left, head color, head text color, head font weight 'normal'")

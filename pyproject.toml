@@ -2,9 +2,9 @@
 name="st-df-table"
 authors = ["Piotr Synowiec <psynowiec@gmail.com>"]
 description = "Alternative to `st.table` with configuration displaying Pandas DataFrame"
-version="0.0.4"
+version="0.0.0"
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.8"
 streamlit = ">= 0.63"
 pandas = "*"
 
