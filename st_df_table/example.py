@@ -7,7 +7,7 @@ import streamlit as st
 
 from st_df_table import st_table
 
-# st.set_page_config(layout="wide", page_title="st_df_table.st_table")
+st.set_page_config(layout="wide", page_title="st_df_table.st_table")
 
 data = {
     "Column A": [1, 2, 3, 4, 5, 6],
