@@ -9,6 +9,14 @@ from st_df_table import st_table
 
 st.set_page_config(layout="wide", page_title="st_df_table.st_table")
 
+st.title(f"st_df_table.st_table ({version('st_df_table')}) - custom DataFrame display")
+
+st.markdown(
+    '<a href="https://mysiar-org.github.io/st_df_table" target="_blank"><h3>Documentation</h3></a>',
+    unsafe_allow_html=True,
+)
+
+
 data = {
     "Column A": [1, 2, 3, 4, 5, 6],
     "Column B": ["A", "B", "C", "F", "G", "H"],
@@ -17,7 +25,7 @@ data = {
 
 df = pd.DataFrame(data)
 
-st.title(f"st_df_table.st_table ({version('st_df_table')}) - custom DataFrame display")
+
 st.subheader("Default")
 st_table(df)
 st.subheader("Align left, head color, head text color, head font weight 'normal'")
