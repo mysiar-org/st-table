@@ -92,3 +92,6 @@ st_table(
 
 ```
 ![table-4](https://raw.githubusercontent.com/mysiar-org/st-table/refs/heads/master/doc/table4.png)
+
+## Cloud example
+[https://mysiar-org-st-table-st-df.streamlit.app/](https://mysiar-org-st-table-st-df.streamlit.app/)

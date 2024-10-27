@@ -1,3 +1,8 @@
+"""
+    .. include:: ../README.md
+    .. include:: ../CHANGELOG.md
+"""
+
 import os
 
 import pandas as pd
@@ -51,44 +56,39 @@ def st_table(
 ):
     """Displays Pandas DataFrame
 
-    Parameters
-    ----------
+    :param df: pd.DataFrame
+    :param head_align: str - aligning table header, values are: "center", "left", "right"
+    :param data_align: str - align table data, values are: "center", "left", "right"
+    :param head_bg_color: str - table header background color
+    :param data_bg_color: str - table data background color
+    :param head_color: str - table header text color
+    :param data_color: str - table data text color
+    :param head_font_weight: str - table header font weight
+    :param data_font_weight: str - table data font weight
+    :param bordered: bool - table bordered
+    :param border_color: str - table border color
+    :param border_width: int - table border width in pixels
+    :param table_width: int - table width in pixels
+    :param sortable: bool - table columns sortable
+    :param font: str - table font name
+    :param font_size: int - table font size in pixels
+    :param paginated: bool - table paginated - **if this is False all below pagination parameters are disregarded**
+    :param pagination_size_per_page: int - number of records per page
+    :param pagination_bar_size: int - pagination bar size
+    :param pagination_text_color: str - text color of pagination bar
+    :param pagination_bg_color: str - background color of pagination bar
+    :param pagination_border_color: str - border color of pagination bar
+    :param pagination_active_color: str - active text color of pagination bar
+    :param pagination_active_border_color: str - active border color of pagination bar
+    :param pagination_active_bg_color: str - active background color of pagination bar
+    :param pagination_hover_color: str - hover text color of pagination bar
+    :param pagination_hover_bg_color: str - hover background color of pagination bar
+    :param key: str
+            An optional key that uniquely identifies this component. If this is
+            None, and the component's arguments are changed, the component will
+            be re-mounted in the Streamlit frontend and lose its current state.
 
-    df: pd.DataFrame
-    head_align: str - aligning table header, values are: "center", "left", "right"
-    data_align: str - align table data, values are: "center", "left", "right"
-    head_bg_color: str - table header background color
-    data_bg_color: str - table data background color
-    head_color: str - table header text color
-    data_color: str - table data text color
-    head_font_weight: str - table header font weight
-    data_font_weight: str - table data font weight
-    bordered: bool - table bordered
-    border_color: str - table border color
-    border_width: int - table border width in pixels
-    table_width: int - table width in pixels
-    sortable: bool - table columns sortable
-    font: str - table font name
-    font_size: int - table font size in pixels
-    paginated: bool - table paginated
-    pagination_size_per_page: int - number of records per page
-    pagination_bar_size: int - pagination bar size
-    pagination_text_color: str - text color of pagination bar
-    pagination_bg_color: str - background color of pagination bar
-    pagination_border_color: str - border color of pagination bar
-    pagination_active_color: str - active text color of pagination bar
-    pagination_active_border_color: str - active border color of pagination bar
-    pagination_active_bg_color: str - active background color of pagination bar
-    pagination_hover_color: str - hover text color of pagination bar
-    pagination_hover_bg_color: str - hover background color of pagination bar
-    key: str
-        An optional key that uniquely identifies this component. If this is
-        None, and the component's arguments are changed, the component will
-        be re-mounted in the Streamlit frontend and lose its current state.
-
-    Returns
-    -------
-    None
+    :return: none
 
     """
     columns = [{"dataField": col, "text": col, "sort": sortable} for col in df.columns]

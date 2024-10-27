@@ -17,7 +17,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/mysiar-org/st-table",
     project_urls={
-        "Documentation": "https://github.com/mysiar-org/st-table",
+        "Documentation": "https://mysiar-org.github.io/st_df_table",
         "Changelog": "https://github.com/mysiar-org/st-table/blob/master/CHANGELOG.md",
         "Issues": "https://github.com/mysiar-org/st-table/issues",
         "Examples": "https://mysiar-org-st-table-st-df.streamlit.app",
