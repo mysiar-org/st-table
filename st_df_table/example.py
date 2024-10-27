@@ -12,7 +12,7 @@ st.set_page_config(layout="wide", page_title="st_df_table.st_table")
 st.title(f"st_df_table.st_table ({version('st_df_table')}) - custom DataFrame display")
 
 st.markdown(
-    '<a href="https://mysiar-org.github.io/st_df_table" target="_blank"><h3>Documentation</h3></a>',
+    '<a href="https://mysiar-org.github.io/st-df-table" target="_blank"><h3>Documentation</h3></a>',
     unsafe_allow_html=True,
 )
 
