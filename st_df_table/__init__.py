@@ -52,6 +52,7 @@ def st_table(
     pagination_active_bg_color: str = "gray",
     pagination_hover_color: str = "white",
     pagination_hover_bg_color: str = "gray",
+    vertical_alignment: str = "middle",
     key=None,
 ):
     """Displays Pandas DataFrame
@@ -83,6 +84,11 @@ def st_table(
     :param pagination_active_bg_color: str - active background color of pagination bar
     :param pagination_hover_color: str - hover text color of pagination bar
     :param pagination_hover_bg_color: str - hover background color of pagination bar
+    :param vertical_alignment: str - vertical alignment of table rows,
+        allowed values are:
+            top - Aligns content to the top of the cell.
+            middle - Centers content vertically within the cell.
+            bottom - Aligns content to the bottom of the cell.
     :param key: str
             An optional key that uniquely identifies this component. If this is
             None, and the component's arguments are changed, the component will
@@ -122,5 +128,6 @@ def st_table(
         pagination_active_bg_color=pagination_active_bg_color,
         pagination_hover_color=pagination_hover_color,
         pagination_hover_bg_color=pagination_hover_bg_color,
+        vertical_alignment=vertical_alignment,
         key=key,
     )
