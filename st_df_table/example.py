@@ -1,21 +1,33 @@
+import string
+from importlib.metadata import version
+
+import numpy as np
+import pandas as pd
 import streamlit as st
 
-import pandas as pd
 from st_df_table import st_table
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_title="st_df_table.st_table")
+
+st.title(f"st_df_table.st_table ({version('st_df_table')}) - custom DataFrame display")
+
+st.markdown(
+    '<a href="https://mysiar-org.github.io/st-df-table" target="_blank"><h3>Documentation</h3></a>',
+    unsafe_allow_html=True,
+)
+
 
 data = {
     "Column A": [1, 2, 3, 4, 5, 6],
-    "Column C": [True, False, True, False, True, False],
     "Column B": ["A", "B", "C", "F", "G", "H"],
+    "Column C": [True, False, True, False, True, False],
 }
 
 df = pd.DataFrame(data)
 
-st.title("Custom DataFrame Display")
+
 st.subheader("Default")
-st_table(df)
+st_table(df, key="default")
 st.subheader("Align left, head color, head text color, head font weight 'normal'")
 st_table(
     df,
@@ -67,5 +79,55 @@ st_table(
     font_size=14,
     key="left2",
 )
-st.subheader("Default")
-st_table(df)
+
+st.subheader("Pagination")
+df = pd.DataFrame(
+    {
+        "Column A": list(range(1, 101)),
+        "Column B": np.random.choice(list(string.ascii_uppercase), size=100),
+        "Column C": np.random.rand(100),
+    }
+)
+
+st_table(
+    df,
+    border_width=4,
+    border_color="red",
+    paginated=True,
+    pagination_size_per_page=7,
+    pagination_bar_size=4,
+    pagination_text_color="blue",
+    pagination_bg_color="yellow",
+    pagination_border_color="green",
+    pagination_active_color="yellow",
+    key="adsasdasd",
+)
+
+st.subheader("Wrapped rows height")
+
+df = pd.DataFrame(
+    {
+        "Column A ****** ****** ****** ****** ********************************************************************": list(
+            range(1, 11)
+        ),
+        "Column B": [" ".join(np.random.choice(list(string.ascii_uppercase), size=66)) for _ in range(10)],
+        "Column C": np.random.rand(10),
+    }
+)
+
+st_table(df, key="wrapped")
+
+st.subheader("Wrapped rows height and pagination")
+df = pd.DataFrame(
+    {
+        "Column A ****** ****** ****** ****** ********************************************************************": list(
+            range(1, 101)
+        ),
+        "Column B": [" ".join(np.random.choice(list(string.ascii_uppercase), size=66)) for _ in range(100)],
+        "Column C": np.random.rand(100),
+    }
+)
+st_table(df, paginated=True, key="wrapped_and_paginated")
+
+# def st_table_paginated(df: pd.DataFrame, **args) -> None:
+#     st_table(df=df, **args)

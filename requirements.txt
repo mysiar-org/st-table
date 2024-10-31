@@ -1,0 +1,4 @@
+# this file is only for Streamlit Cloud deployment
+streamlit
+pandas
+st-df-table
