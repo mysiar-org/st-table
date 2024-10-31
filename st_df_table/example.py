@@ -127,7 +127,19 @@ df = pd.DataFrame(
         "Column C": np.random.rand(100),
     }
 )
-st_table(df, paginated=True, key="wrapped_and_paginated")
+st_table(df, paginated=True, key="wrapped_and_paginated", font="Helvetica Neue", font_size=14)
 
 # def st_table_paginated(df: pd.DataFrame, **args) -> None:
 #     st_table(df=df, **args)
+
+
+st.markdown(
+    """
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400&display=swap');
+    * {font-family: 'Helvetica Neue', sans-serif !important; font-size: 13px}
+
+</style>
+""",
+    unsafe_allow_html=True,
+)
