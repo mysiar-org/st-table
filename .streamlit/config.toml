@@ -9,7 +9,7 @@ secondaryBackgroundColor = '#006680'
 
 textColor = '#FFFFFF'
 
-font = "monospace"
+font = "sans serif"
 
 [server]
 enableXsrfProtection = true

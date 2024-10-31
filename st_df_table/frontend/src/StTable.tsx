@@ -25,9 +25,8 @@ const StTable: React.FC<Props> = (props) => {
         data_color,
         head_font_weight,
         data_font_weight,
-        bordered,
         border_color,
-        border_width,
+        bordered,
         table_width,
         sortable,
         font,
@@ -46,6 +45,14 @@ const StTable: React.FC<Props> = (props) => {
         vertical_alignment,
         data,
     } = args;
+
+    let {
+        border_width,
+    } = args;
+
+    if (!bordered) {
+        border_width = 0
+    }
 
     const tableRef = useRef<HTMLDivElement | null>(null);
     console.log(vertical_alignment)
@@ -110,17 +117,12 @@ const StTable: React.FC<Props> = (props) => {
     return (
         <div ref={tableRef} style={table_width ? {width: table_width} : {}}>
             <style>{`
-            .custom-border.react-bootstrap-table,
-                .custom-border.react-bootstrap-table table {
-                    border: ${border_width}px ${border_color} solid !important;
-                    margin-bottom: 0 !important;
-                }
                 .custom-border.react-bootstrap-table th,
                 .custom-border.react-bootstrap-table td {
                     border: ${border_width}px ${border_color} solid !important;
                 }
-                .custom-font-family.react-bootstrap-table td,
-                .custom-font-family.react-bootstrap-table th {
+                react-bootstrap-table td,
+                react-bootstrap-table th {
                     font-family: ${font} !important;
                     font-size: ${font_size}px !important;
                 }
@@ -132,6 +134,8 @@ const StTable: React.FC<Props> = (props) => {
                      --bs-pagination-bg: ${pagination_bg_color} !important; 
                      --bs-pagination-border-color: ${pagination_border_color} !important;
                      --bs-pagination-border-radius: 0 !important;
+                     font-family: ${font} !important;
+                     font-size: ${font_size}px !important;
                 }
                 .pagination .page-item.active .page-link {
                     background-color: ${pagination_active_bg_color} !important;
@@ -141,20 +145,15 @@ const StTable: React.FC<Props> = (props) => {
                 .pagination .page-item .page-link {
                     color: ${pagination_text_color} !important;
                      box-shadow: none !important;                     
-                     outline: none !important;                     
+                     outline: none !important;
+                     font-family: ${font} !important;
+                    font-size: ${font_size}px !important;                     
 
                 }
                 .pagination .page-item .page-link:hover {
                     background-color: ${pagination_hover_bg_color} !important;
                     color: ${pagination_hover_color} !important;
                     border-color: ${pagination_active_border_color} !important;
-                }
-                .custom-border.react-bootstrap-table,
-                .custom-border.react-bootstrap-table table {
-                    border: ${bordered ? '1px solid' : '0'} ${border_color} !important;
-                }
-                .custom-font-family.react-bootstrap-table td,
-                .custom-font-family.react-bootstrap-table th {
                     font-family: ${font} !important;
                     font-size: ${font_size}px !important;
                 }
