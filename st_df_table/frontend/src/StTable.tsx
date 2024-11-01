@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from "react";
 import {Streamlit, withStreamlitConnection} from "streamlit-component-lib";
-import BootstrapTable, {ColumnDescription, RowEventHandlerProps} from 'react-bootstrap-table-next';
+import BootstrapTable, {ColumnDescription} from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,8 +12,6 @@ interface Props {
 
 const StTable: React.FC<Props> = (props) => {
     const pagination_line_height = 10;
-    const padding = 8;
-    const pagination_extra_table_height = 54;
 
     const {args} = props;
     const {
@@ -81,37 +79,20 @@ const StTable: React.FC<Props> = (props) => {
         }
     }));
 
+
     useEffect(() => {
-        if (tableRef.current) {
-            const headerHeight = tableRef.current.querySelector('thead')?.offsetHeight || 0;
-            const paginationHeight = paginated ? pagination_extra_table_height : 0;
-
-            const rowHeights = Array.from(
-                tableRef.current.querySelectorAll("tbody tr")
-            ).map(row => (row as HTMLTableRowElement).offsetHeight);
-
-            const totalRowHeight = rowHeights
-                .slice(0, pagination_size_per_page)
-                .reduce((acc: number, height: number) => acc + height, 0);
-
-            const totalHeight = totalRowHeight + headerHeight + paginationHeight + padding;
-            Streamlit.setFrameHeight(totalHeight);
-        }
-    }, [data, pagination_size_per_page, paginated]);
-
-    const rowStyle = (_: any, rowIndex: number): React.CSSProperties => ({
-        backgroundColor: rowIndex % 2 === 0 ? data_bg_color : "",
-        textAlign: data_align,
-    });
-
-    const rowEvents: RowEventHandlerProps<any> = {
-        onMouseEnter: (e, row, rowIndex) => {
-            if (rowIndex !== undefined) {
-                const target = e.currentTarget as HTMLTableRowElement;
-                target.style.backgroundColor = "#f0f0f0"; // Optional: example on-hover styling
+        const adjustHeight = () => {
+            if (tableRef.current) {
+                const height = tableRef.current.offsetHeight;
+                Streamlit.setFrameHeight(height);
             }
-        }
-    };
+        };
+
+        adjustHeight();
+        window.addEventListener('resize', adjustHeight);
+
+        return () => window.removeEventListener('resize', adjustHeight);
+    }, []);
 
     return (
         <div ref={tableRef} style={table_width ? {width: table_width} : {}}>
@@ -167,8 +148,6 @@ const StTable: React.FC<Props> = (props) => {
                 columns={columns}
                 wrapperClasses="custom-border"
                 bordered={bordered}
-                rowStyle={rowStyle}
-                rowEvents={rowEvents}
                 pagination={paginated ? paginationFactory({
                     page: 1,
                     sizePerPage: pagination_size_per_page,

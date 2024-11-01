@@ -107,7 +107,7 @@ st.subheader("Wrapped rows height")
 
 df = pd.DataFrame(
     {
-        "Column A ****** ****** ****** ****** ********************************************************************": list(
+        "Column A ****** ****** ****** ****** *****************************************************************": list(
             range(1, 11)
         ),
         "Column B": [" ".join(np.random.choice(list(string.ascii_uppercase), size=66)) for _ in range(10)],
@@ -120,7 +120,7 @@ st_table(df, key="wrapped")
 st.subheader("Wrapped rows height and pagination")
 df = pd.DataFrame(
     {
-        "Column A ****** ****** ****** ****** ********************************************************************": list(
+        "Column A ****** ****** ****** ****** ****************************************************************": list(
             range(1, 101)
         ),
         "Column B": [" ".join(np.random.choice(list(string.ascii_uppercase), size=66)) for _ in range(100)],

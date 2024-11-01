@@ -17,6 +17,9 @@ exclude = [
     "__pycache__",
     "venv",
     "var",
+    "./st_df_table/frontend",
+    "build",
+    "dist"
 ]
 max-line-length = 120
 line-length = 120
