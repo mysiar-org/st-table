@@ -55,7 +55,6 @@ const StTable: React.FC<Props> = (props) => {
     }
 
     const tableRef = useRef<HTMLDivElement | null>(null);
-    console.log(vertical_alignment)
 
     const columns: ColumnDescription[] = args.columns.map((col: ColumnDescription) => ({
         ...col,
