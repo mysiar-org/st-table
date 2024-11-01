@@ -44,3 +44,7 @@ upload::
 kill::
 	killall -9 node
 	killall -9 streamlit
+
+lint::
+	venv/bin/flake8
+	cd ${COMPONENT}/frontend && npm run lint
