@@ -95,7 +95,8 @@ st_table(
     border_color="red",
     paginated=True,
     pagination_size_per_page=7,
-    pagination_bar_size=4,
+    pagination_bar_size=5,
+    pagination_bar_height=5,
     pagination_text_color="blue",
     pagination_bg_color="yellow",
     pagination_border_color="green",
@@ -127,7 +128,9 @@ df = pd.DataFrame(
         "Column C": np.random.rand(100),
     }
 )
-st_table(df, paginated=True, key="wrapped_and_paginated", font="Helvetica Neue", font_size=14)
+st_table(
+    df, paginated=True, key="wrapped_and_paginated", font="Helvetica Neue", font_size=14, pagination_show_total=True
+)
 
 # def st_table_paginated(df: pd.DataFrame, **args) -> None:
 #     st_table(df=df, **args)
