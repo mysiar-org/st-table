@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from "react";
 import {Streamlit, withStreamlitConnection} from "streamlit-component-lib";
-import BootstrapTable, {ColumnDescription} from 'react-bootstrap-table-next';
+import BootstrapTable, {ColumnDescription,} from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,8 +10,8 @@ interface Props {
     args: any;
 }
 
+
 const StTable: React.FC<Props> = (props) => {
-    const pagination_line_height = 10;
 
     const {args} = props;
     const {
@@ -32,6 +32,7 @@ const StTable: React.FC<Props> = (props) => {
         paginated,
         pagination_size_per_page,
         pagination_bar_size,
+        pagination_bar_height,
         pagination_text_color,
         pagination_bg_color,
         pagination_border_color,
@@ -40,6 +41,7 @@ const StTable: React.FC<Props> = (props) => {
         pagination_active_bg_color,
         pagination_hover_color,
         pagination_hover_bg_color,
+        pagination_show_total,
         vertical_alignment,
         data,
     } = args;
@@ -94,6 +96,7 @@ const StTable: React.FC<Props> = (props) => {
         return () => window.removeEventListener('resize', adjustHeight);
     }, []);
 
+
     return (
         <div ref={tableRef} style={table_width ? {width: table_width} : {}}>
             <style>{`
@@ -108,7 +111,7 @@ const StTable: React.FC<Props> = (props) => {
                 }
                 .pagination {
                      margin-top: 5px;
-                     line-height: ${pagination_line_height}px !important;
+                     line-height: ${pagination_bar_height}px !important;
                      justify-content: left !important;
                      --bs-pagination-color: ${pagination_text_color} !important; 
                      --bs-pagination-bg: ${pagination_bg_color} !important; 
@@ -124,9 +127,9 @@ const StTable: React.FC<Props> = (props) => {
                 }
                 .pagination .page-item .page-link {
                     color: ${pagination_text_color} !important;
-                     box-shadow: none !important;                     
-                     outline: none !important;
-                     font-family: ${font} !important;
+                    box-shadow: none !important;                     
+                    outline: none !important;
+                    font-family: ${font} !important;
                     font-size: ${font_size}px !important;                     
 
                 }
@@ -139,10 +142,11 @@ const StTable: React.FC<Props> = (props) => {
                 }
                 .pagination {
                     margin-top: 5px;
-                    line-height: ${pagination_line_height}px !important;
+                    line-height: ${pagination_bar_height}px !important;
                 }
             `}</style>
             <BootstrapTable
+                bootstrap4
                 keyField="id"
                 data={data}
                 columns={columns}
@@ -153,6 +157,8 @@ const StTable: React.FC<Props> = (props) => {
                     sizePerPage: pagination_size_per_page,
                     paginationSize: pagination_bar_size,
                     hideSizePerPage: true,
+                    withFirstAndLast: true,
+                    showTotal: pagination_show_total,
                 }) : undefined}
             />
         </div>
@@ -160,3 +166,5 @@ const StTable: React.FC<Props> = (props) => {
 };
 
 export default withStreamlitConnection(StTable);
+
+

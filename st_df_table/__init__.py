@@ -44,6 +44,7 @@ def st_table(
     paginated: bool = False,
     pagination_size_per_page: int = 10,
     pagination_bar_size: int = 5,
+    pagination_bar_height: int = 14,
     pagination_text_color: str = "black",
     pagination_bg_color: str = "white",
     pagination_border_color: str = "black",
@@ -52,6 +53,7 @@ def st_table(
     pagination_active_bg_color: str = "gray",
     pagination_hover_color: str = "white",
     pagination_hover_bg_color: str = "gray",
+    pagination_show_total: bool = False,
     vertical_alignment: str = "middle",
     key=None,
 ):
@@ -75,7 +77,8 @@ def st_table(
     :param font_size: int - table font size in pixels
     :param paginated: bool - table paginated - **if this is False all below pagination parameters are disregarded**
     :param pagination_size_per_page: int - number of records per page
-    :param pagination_bar_size: int - pagination bar size
+    :param pagination_bar_size: int - pagination bar size - number of paged displayed on pagination bar
+    :param pagination_bar_height: int - pagination bar height
     :param pagination_text_color: str - text color of pagination bar
     :param pagination_bg_color: str - background color of pagination bar
     :param pagination_border_color: str - border color of pagination bar
@@ -84,6 +87,7 @@ def st_table(
     :param pagination_active_bg_color: str - active background color of pagination bar
     :param pagination_hover_color: str - hover text color of pagination bar
     :param pagination_hover_bg_color: str - hover background color of pagination bar
+    :param pagination_show_total: bool - whether to show total info
     :param vertical_alignment: str - vertical alignment of table rows,
         allowed values are:
             top - Aligns content to the top of the cell.
@@ -120,6 +124,7 @@ def st_table(
         paginated=paginated,
         pagination_size_per_page=pagination_size_per_page,
         pagination_bar_size=pagination_bar_size,
+        pagination_bar_height=pagination_bar_height,
         pagination_text_color=pagination_text_color,
         pagination_bg_color=pagination_bg_color,
         pagination_border_color=pagination_border_color,
@@ -128,6 +133,7 @@ def st_table(
         pagination_active_bg_color=pagination_active_bg_color,
         pagination_hover_color=pagination_hover_color,
         pagination_hover_bg_color=pagination_hover_bg_color,
+        pagination_show_total=pagination_show_total,
         vertical_alignment=vertical_alignment,
         key=key,
     )
