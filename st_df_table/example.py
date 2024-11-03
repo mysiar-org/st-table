@@ -9,6 +9,24 @@ from st_df_table import st_table
 
 st.set_page_config(layout="wide", page_title="st_df_table.st_table")
 
+st.markdown(
+    """
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400&display=swap');
+  </style>
+</style>
+""",
+    unsafe_allow_html=True,
+)
+
+# * {
+#     --font: 'Roboto', sans-serif !important;
+#     --gdg-font-family: 'Roboto', sans-serif !important;
+#     font-family: 'Roboto', sans-serif !important;
+#     font-size: 13px;
+# }
+
+
 st.title(f"st_df_table.st_table ({version('st_df_table')}) - custom DataFrame display")
 
 st.markdown(
@@ -108,7 +126,7 @@ st.subheader("Wrapped rows height")
 
 df = pd.DataFrame(
     {
-        "Column A ****** ****** ****** ****** *****************************************************************": list(
+        "Column A ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ******": list(
             range(1, 11)
         ),
         "Column B": [" ".join(np.random.choice(list(string.ascii_uppercase), size=66)) for _ in range(10)],
@@ -121,7 +139,7 @@ st_table(df, key="wrapped")
 st.subheader("Wrapped rows height and pagination")
 df = pd.DataFrame(
     {
-        "Column A ****** ****** ****** ****** ****************************************************************": list(
+        "Column A ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ****** ******": list(
             range(1, 101)
         ),
         "Column B": [" ".join(np.random.choice(list(string.ascii_uppercase), size=66)) for _ in range(100)],
@@ -129,20 +147,10 @@ df = pd.DataFrame(
     }
 )
 st_table(
-    df, paginated=True, key="wrapped_and_paginated", font="Helvetica Neue", font_size=14, pagination_show_total=True
-)
-
-# def st_table_paginated(df: pd.DataFrame, **args) -> None:
-#     st_table(df=df, **args)
-
-
-st.markdown(
-    """
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400&display=swap');
-    * {font-family: 'Helvetica Neue', sans-serif !important; font-size: 13px}
-
-</style>
-""",
-    unsafe_allow_html=True,
+    df,
+    paginated=True,
+    key="wrapped_and_paginated",
+    font_size=12,
+    pagination_show_total=True,
+    font="Helvetica",
 )
